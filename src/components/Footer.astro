@@ -1,0 +1,48 @@
+---
+const businessName = 'Diversiones Anadela';
+const phone = '6671198730';
+const whatsappUrl = `https://wa.me/52${phone}?text=${encodeURIComponent('Hola, me interesa cotizar un brincolín/mobiliario para mi evento.')}`;
+---
+
+<footer class="bg-gray-900 pt-12 pb-6 text-white/70">
+  <div class="mx-auto max-w-[1160px] px-4">
+    <div class="grid gap-8 border-b border-white/8 pb-8 min-[720px]:grid-cols-3">
+      <div>
+        <strong class="font-poppins mb-2 block text-[1.15rem] font-extrabold text-yellow-400"
+          >{businessName}</strong
+        >
+        <p class="text-[0.9rem] leading-[1.7]">
+          Renta de brincolines y mobiliario para eventos familiares con atención inmediata en
+          Navolato y partes de Culiacán.
+        </p>
+      </div>
+      <div>
+        <strong class="font-poppins mb-2 block text-[1.15rem] font-extrabold text-yellow-400"
+          >Servicios</strong
+        >
+        <p class="text-[0.9rem] leading-[1.7]">
+          Brincolines clásicos y acuáticos, mesas redondas, cuadradas y de tablon, carpas y
+          rockolas.
+        </p>
+      </div>
+      <div>
+        <strong class="font-poppins mb-2 block text-[1.15rem] font-extrabold text-yellow-400"
+          >Contacto</strong
+        >
+        <p class="text-[0.9rem] leading-[1.7]">Cel: 6671-198730</p>
+        <p class="text-[0.9rem] leading-[1.7]">San Pedro Navolato, Sinaloa</p>
+      </div>
+    </div>
+    <div
+      class="flex items-center justify-between gap-4 pt-6 text-[0.85rem] max-[719px]:flex-col max-[719px]:text-center"
+    >
+      <p>© {new Date().getFullYear()} {businessName}. Todos los derechos reservados.</p>
+      <a
+        class="font-bold text-yellow-400 transition-opacity duration-300 hover:opacity-80"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer">Cotizar por WhatsApp →</a
+      >
+    </div>
+  </div>
+</footer>

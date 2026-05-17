@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-950: #062b61;
+  --color-blue-900: #0b4db8;
+  --color-blue-800: #0f63d6;
+  --color-blue-700: #1971e8;
+  --color-blue-600: #1e88e5;
+  --color-blue-500: #42a5f5;
+  --color-yellow-500: #ffd02f;
+  --color-yellow-400: #ffe06a;
+  --color-yellow-300: #fff3a8;
+  
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+  
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  --radius-custom: 20px;
+  --radius-custom-sm: 14px;
+  --radius-custom-lg: 28px;
+  
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-reverse: float 10s ease-in-out infinite reverse;
+  --animate-float-fast: float 6s ease-in-out infinite;
+  --animate-float-fast-reverse: float 7s ease-in-out infinite reverse;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+}
+
+/* Base resets & typography */
+body {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Animations for IntersectionObserver */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom animation for WhatsApp floating button */
+@keyframes pulse-wa {
+  0%, 100% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); }
+  50% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.55), 0 0 0 8px rgba(37, 211, 102, 0.1); }
+}

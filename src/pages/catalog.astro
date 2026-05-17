@@ -1,0 +1,379 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const businessName = 'Diversiones Anadela';
+const phone = '6671198730';
+
+const products = [
+  {
+    id: 'spiderman',
+    title: 'Brincolín Spiderman',
+    category: 'brincolines',
+    image: '/brincolines/spiderman.webp',
+    desc: 'El favorito de los pequeños superhéroes. Cuenta con zona de salto amplia y postes temáticos en 3D.',
+    dimensions: '8m x 5m',
+    badge: 'Popular'
+  },
+  {
+    id: 'avengers',
+    title: 'Castillo Avengers',
+    category: 'brincolines',
+    image: '/brincolines/avengers.webp',
+    desc: 'Únete a los héroes más poderosos del planeta. Gran colorido, diseño de torre y seguridad reforzada.',
+    dimensions: '9m x 4m',
+    badge: 'El mas grande'
+  },
+  {
+    id: 'escaladora-grande',
+    title: 'Brincolín Escaladora Grande',
+    category: 'brincolines',
+    image: '/brincolines/escaladoraGrande.webp',
+    desc: 'Diversión al máximo con escaladora vertical y una emocionante resbaladilla integrada de gran altura.',
+    dimensions: '7m x 4m',
+    badge: 'Escaladora grande'
+  },
+
+  {
+    id: 'h2o-double',
+    title: 'Acuático H2O Palmeras',
+    category: 'acuaticos',
+    image: '/brincolines/h2o2.webp',
+    desc: 'Diseño tropical con palmeras inflables y deslizador acuático súper refrescante.',
+    dimensions: '10m x 6m',
+    badge: 'Acuático'
+  },
+  {
+    id: 'miki',
+    title: 'Castillo Mickey Mouse',
+    category: 'brincolines',
+    image: '/brincolines/mikiViejo.webp',
+    desc: 'Un clásico que nunca falla. Con el diseño del ratón favorito de todos y zona de salto segura.',
+    dimensions: '5m x 4m',
+    badge: 'Clásico'
+  },
+  {
+    id: 'palmeras',
+    title: 'Brincolín Palmeras',
+    category: 'brincolines',
+    image: '/brincolines/palmeras.webp',
+    desc: 'Lleva el ambiente de playa a tu evento. Colores vibrantes y gran espacio interior de rebote.',
+    dimensions: '9m x 5m',
+    badge: 'Grande'
+  },
+  {
+    id: 'paw-patrol',
+    title: 'Brincolín Paw Patrol',
+    category: 'brincolines',
+    image: '/brincolines/pawPatrol.webp',
+    desc: 'Acompaña a Chase, Marshall y Skye en una aventura de saltos sin parar y postes de juego.',
+    dimensions: '6m x 6m',
+    badge: 'Mas querido'
+  },
+  {
+    id: 'princesas-arcos',
+    title: 'Castillo Princesas con Arcos',
+    category: 'brincolines',
+    image: '/brincolines/princesasArcos.webp',
+    desc: 'Un palacio de ensueño para las pequeñas de la casa. Diseño elegante con arcos reales e inflado impecable.',
+    dimensions: '5m x 4m',
+    badge: 'Fantasía'
+  },
+  {
+    id: 'princesas-resbaladilla',
+    title: 'Castillo Princesas con Resbaladilla',
+    category: 'brincolines',
+    image: '/brincolines/princesasResbaladilla.webp',
+    desc: 'Diversión completa con zona de saltos, resbaladilla lateral y temática de cuento de hadas.',
+    dimensions: '6m x 4m',
+    badge: 'Súper Ventas'
+  },
+  {
+    id: 'unicornios',
+    title: 'Brincolín Unicornios Mágicos',
+    category: 'brincolines',
+    image: '/brincolines/unicornios.webp',
+    desc: 'Un mundo mágico lleno de brillos y fantasía. Colores pastel y diseño de unicornio tridimensional.',
+    dimensions: '6m x 4m',
+    badge: 'Favorito'
+  },
+  {
+    id: 'carpas',
+    title: 'Carpas Elegantes para Eventos',
+    category: 'mobiliario',
+    image: '/brincolines/carpas.webp',
+    desc: 'Cobertura profesional y estética para proteger a tus invitados del sol y del clima en cualquier zona.',
+    dimensions: '6m x 6m',
+    badge: 'Esencial'
+  },
+  {
+    id: 'mesa-tiffany',
+    title: 'Mesas con Sillas Tiffany',
+    category: 'mobiliario',
+    image: '/brincolines/mesaTifanny.webp',
+    desc: 'Mesa redonda para 10 personas con sillas Tiffany.',
+    dimensions: 'Mesa redonda',
+    badge: 'Elegante'
+  },
+  {
+    id: 'mesa-plastico',
+    title: 'Mesas con Sillas de Plástico',
+    category: 'mobiliario',
+    image: '/brincolines/mesaPlastico.webp',
+    desc: 'Mesa redonda para 10 personas con sillas de plástico.',
+    dimensions: 'Mesa redonda',
+    badge: 'Práctico'
+  }, 
+  {
+    id: 'mesa-cuadrada',
+    title: 'Mesas Cuadradas',
+    category: 'mobiliario',
+    image: '/carrusel/cuadradas.webp',
+    desc: 'Mesa cuadrada de 12 sillas.',
+    dimensions: 'Mesa cuadrada',
+    badge: 'Espacioza'
+  }
+];
+
+// Helper to generate WhatsApp link per product
+function getWhatsappUrl(productTitle: string) {
+  const message = encodeURIComponent(`Hola, me interesa cotizar el servicio de ${productTitle} para mi evento.`);
+  return `https://wa.me/52${phone}?text=${message}`;
+}
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0b4db8" />
+    <title>Catálogo de inflables | {businessName}</title>
+    <meta
+      name="description"
+      content="Explora nuestro catálogo de brincolines inflables clásicos y acuáticos, mesas, sillas y carpas en Navolato y Culiacán. Cotiza por WhatsApp."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Catálogo de inflables | Diversiones Anadela" />
+    <meta
+      property="og:description"
+      content="Encuentra el brincolín o mobiliario perfecto para tu fiesta y cotiza rápido por WhatsApp."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_MX" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="m-0 text-gray-800 bg-gray-50 leading-relaxed antialiased overflow-x-hidden">
+    
+    <Header isHome={false} />
+
+    <main class="pt-24 pb-20">
+      
+      <!-- HERO INTRO -->
+      <section class="py-10 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white mb-10">
+        <div class="max-w-[1160px] mx-auto px-4 text-center flex flex-col items-center gap-3">
+          <span class="inline-flex items-center gap-[0.4rem] px-[0.9rem] py-[0.4rem] rounded-full text-[0.82rem] font-bold uppercase tracking-wider bg-yellow-500/18 text-[#ffe06a]">Diversión Garantizada</span>
+          <h1 class="text-[clamp(2.2rem,5vw,3.5rem)] font-extrabold font-poppins leading-[1.1] text-white">Catálogo Completo de Renta</h1>
+          <p class="text-[1.1rem] text-white/80 max-w-[60ch] leading-relaxed">
+            Explora nuestra variedad de brincolines clásicos, acuáticos, mesas, sillas y carpas. ¡Perfectos e impecables para tu fiesta!
+          </p>
+        </div>
+      </section>
+
+      <!-- FILTER TABS -->
+      <section class="max-w-[1160px] mx-auto px-4 mb-8">
+        <div class="flex flex-wrap justify-center gap-2.5 md:gap-3" id="filterContainer">
+          <button class="filter-btn active px-6 py-2.5 rounded-full font-bold text-[0.92rem] cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm bg-blue-900 text-white border border-blue-900" data-filter="all">
+            Todos
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full font-bold text-[0.92rem] cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-900" data-filter="brincolines">
+            Brincolines Clásicos
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full font-bold text-[0.92rem] cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-900" data-filter="acuaticos">
+            Brincolines Acuáticos
+          </button>
+          <button class="filter-btn px-6 py-2.5 rounded-full font-bold text-[0.92rem] cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm bg-white text-gray-600 border border-gray-200 hover:border-blue-500 hover:text-blue-900" data-filter="mobiliario">
+            Carpas y Mobiliario
+          </button>
+        </div>
+      </section>
+
+      <!-- PRODUCT SECTIONS -->
+      <div class="max-w-[1160px] mx-auto px-4 flex flex-col gap-14" id="catalogContent">
+        
+        <!-- SECTION: BRINCOLINES -->
+        <section class="category-section flex flex-col gap-6 transition-all duration-300 w-full" data-section="brincolines">
+          <div class="border-b border-gray-200 pb-4">
+            <h2 class="text-2xl font-extrabold text-gray-900 font-poppins flex items-center gap-2">
+              <span class="w-1.5 h-6 rounded-full bg-blue-900"></span>
+              Brincolines Clásicos
+            </h2>
+            <p class="text-[0.92rem] text-gray-500 mt-1">Diversión segura y brincolines coloridos temáticos para todas las edades.</p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {products.filter(p => p.category === 'brincolines').map((product) => (
+              <article class="product-card bg-white border border-gray-200 rounded-custom overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-lg hover:-translate-y-1.5 flex flex-col h-full">
+                <!-- Image Container -->
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 group">
+                  <img 
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-105" 
+                    src={product.image} 
+                    alt={product.title} 
+                    loading="lazy"
+                  />
+                  <span class="absolute top-3 left-3 bg-blue-900 text-white text-[0.72rem] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    {product.badge}
+                  </span>
+                  <span class="absolute bottom-3 right-3 bg-gray-900/80 backdrop-blur-md text-white text-[0.8rem] font-semibold px-2.5 py-1 rounded-custom-sm shadow-sm flex items-center gap-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                    {product.dimensions}
+                  </span>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-6 flex flex-col flex-grow gap-3">
+                  <h2 class="text-[1.25rem] font-extrabold text-gray-900 font-poppins">{product.title}</h2>
+                  <p class="text-[0.92rem] text-gray-500 leading-relaxed flex-grow">{product.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- SECTION: ACUATICOS -->
+        <section class="category-section flex flex-col gap-6 transition-all duration-300 w-full" data-section="acuaticos">
+          <div class="border-b border-gray-200 pb-4">
+            <h2 class="text-2xl font-extrabold text-gray-900 font-poppins flex items-center gap-2">
+              <span class="w-1.5 h-6 rounded-full bg-blue-900"></span>
+              Brincolines Acuáticos
+            </h2>
+            <p class="text-[0.92rem] text-gray-500 mt-1">Refresca tus fiestas de verano con toboganes y albercas inflables refrescantes.</p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {products.filter(p => p.category === 'acuaticos').map((product) => (
+              <article class="product-card bg-white border border-gray-200 rounded-custom overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-lg hover:-translate-y-1.5 flex flex-col h-full">
+                <!-- Image Container -->
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 group">
+                  <img 
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-105" 
+                    src={product.image} 
+                    alt={product.title} 
+                    loading="lazy"
+                  />
+                  <span class="absolute top-3 left-3 bg-blue-900 text-white text-[0.72rem] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    {product.badge}
+                  </span>
+                  <span class="absolute bottom-3 right-3 bg-gray-900/80 backdrop-blur-md text-white text-[0.8rem] font-semibold px-2.5 py-1 rounded-custom-sm shadow-sm flex items-center gap-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                    {product.dimensions}
+                  </span>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-6 flex flex-col flex-grow gap-3">
+                  <h2 class="text-[1.25rem] font-extrabold text-gray-900 font-poppins">{product.title}</h2>
+                  <p class="text-[0.92rem] text-gray-500 leading-relaxed flex-grow">{product.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <!-- SECTION: MOBILIARIO -->
+        <section class="category-section flex flex-col gap-6 transition-all duration-300 w-full" data-section="mobiliario">
+          <div class="border-b border-gray-200 pb-4">
+            <h2 class="text-2xl font-extrabold text-gray-900 font-poppins flex items-center gap-2">
+              <span class="w-1.5 h-6 rounded-full bg-blue-900"></span>
+              Carpas y Mobiliario
+            </h2>
+            <p class="text-[0.92rem] text-gray-500 mt-1">Carpas profesionales, mesas imperiales y sillas cómodas para todos tus invitados.</p>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {products.filter(p => p.category === 'mobiliario').map((product) => (
+              <article class="product-card bg-white border border-gray-200 rounded-custom overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:shadow-lg hover:-translate-y-1.5 flex flex-col h-full">
+                <!-- Image Container -->
+                <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 group">
+                  <img 
+                    class="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-105" 
+                    src={product.image} 
+                    alt={product.title} 
+                    loading="lazy"
+                  />
+                  <span class="absolute top-3 left-3 bg-blue-900 text-white text-[0.72rem] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                    {product.badge}
+                  </span>
+                  <span class="absolute bottom-3 right-3 bg-gray-900/80 backdrop-blur-md text-white text-[0.8rem] font-semibold px-2.5 py-1 rounded-custom-sm shadow-sm flex items-center gap-1">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                    {product.dimensions}
+                  </span>
+                </div>
+
+                <!-- Product Info -->
+                <div class="p-6 flex flex-col flex-grow gap-3">
+                  <h2 class="text-[1.25rem] font-extrabold text-gray-900 font-poppins">{product.title}</h2>
+                  <p class="text-[0.92rem] text-gray-500 leading-relaxed flex-grow">{product.desc}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <Footer />
+
+    <!-- INTERACTIVE FILTERING SCRIPT -->
+    <script>
+      // Selecting all elements
+      const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+      const sections = document.querySelectorAll<HTMLElement>('.category-section');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          buttons.forEach(btn => {
+            btn.classList.remove('active', 'bg-blue-900', 'text-white', 'border-blue-900');
+            btn.classList.add('bg-white', 'text-gray-600', 'border-gray-200');
+          });
+
+          // Add active class to the clicked button
+          button.classList.add('active', 'bg-blue-900', 'text-white', 'border-blue-900');
+          button.classList.remove('bg-white', 'text-gray-600', 'border-gray-200');
+
+          const filter = button.dataset.filter;
+
+          // Toggle visibility of each category section
+          sections.forEach(section => {
+            const sectionCategory = section.dataset.section;
+
+            if (filter === 'all' || sectionCategory === filter) {
+              // Smooth transition to show section
+              section.style.display = 'flex';
+              setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+              }, 50);
+            } else {
+              // Smooth transition to hide section
+              section.style.opacity = '0';
+              section.style.transform = 'translateY(10px)';
+              setTimeout(() => {
+                section.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
