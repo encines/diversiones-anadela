@@ -12,7 +12,9 @@ const homePrefix = isHome ? '' : '/';
   id="navbar"
   aria-label="Navegación principal"
 >
-  <div class="relative z-[10000] mx-auto flex w-full max-w-[1160px] items-center justify-between gap-4 px-4">
+  <div
+    class="relative z-[10000] mx-auto flex w-full max-w-[1160px] items-center justify-between gap-4 px-4"
+  >
     <a
       href="/"
       class={`flex items-center gap-2 font-poppins font-extrabold text-lg transition-colors duration-300 ${isHome ? 'text-white [.scrolled_&]:text-gray-900' : 'text-gray-900'}`}
@@ -149,21 +151,21 @@ const homePrefix = isHome ? '' : '/';
 </style>
 
 <script is:inline>
-  (function() {
+  (function () {
     function initMenu() {
       const navToggle = document.getElementById('navToggle');
       const navMobile = document.getElementById('navMobile');
-      
+
       if (navToggle && navMobile) {
         // Prevent duplicate listener registration
         if (navToggle.dataset.bound) return;
-        navToggle.dataset.bound = "true";
+        navToggle.dataset.bound = 'true';
 
         navToggle.addEventListener('click', () => {
           const isOpen = navMobile.classList.toggle('open');
           navToggle.classList.toggle('open');
           navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-          
+
           if (isOpen) {
             navMobile.style.opacity = '1';
             navMobile.style.pointerEvents = 'auto';
